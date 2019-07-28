@@ -1,0 +1,66 @@
+<p>
+    Form Status: {{registrationProfile.status}}
+</p>
+
+<!-- <a href="https://www.w3schools.com/tags/ref_country_codes.asp">Yaazhini</a> -->
+
+<form [formGroup]="registrationProfile" (ngSubmit)="onSubmit()">
+<tr>
+    <td>FIRST NAME</td>
+    <td><input type="text" formControlName="firstName" required/>
+    (max 30 characters a-z and A-Z)
+    </td>
+</tr>
+
+<br><br>
+Male <input type="radio" formControlName="gender" id="gender" value="Male"/>
+Female <input type="radio" formControlName="gender" id="gender" value="Female"/>
+
+<br>
+<select multiple formControlName="cityName">
+    <option value="">Choose your city</option>
+        <option *ngFor="let city of City" [ngValue]="city" (change)="changeCity($event)">{{city}}
+        </option>
+</select>
+
+<input type="checkbox" formControlName="vehicle1" id="vehicle1" value="Bike"> I have a bike<br>
+
+<div formArrayName="aliases">
+        <h3>Aliases</h3> <button (click)="addAlias()">Add Alias</button>
+      
+        <br><br>
+        <div *ngFor="let alias of aliases.controls; let aliasIndex=index">
+          <!-- The repeated alias template -->
+          <label>
+            Alias:
+            <input type="text" [formControlName]="aliasIndex">
+          </label>
+        </div>
+</div>
+
+<br><br>
+<div formArrayName="qualifications">
+        <h3>Qualifications</h3> <button (click)="addQualifications()">Add Qualifications</button>
+      
+        <br><br>
+        <div *ngFor="let qualification of qualifications.controls; let qualificationIndex=index">
+          <!-- The repeated alias template -->
+          <label>
+            Qualifications:
+            <div formGroupName="qualificationIndex">
+             <input type="text" [formControlName]="qualificationNumber">
+            </div>
+           
+          </label>
+        </div>
+</div>
+
+<br><br>
+
+<div *ngIf="isSubmitted && myForm.invalid">
+        <p>Please select either value</p>
+     </div>
+
+<button type="submit" [disabled]="!registrationProfile.valid">Submit</button>
+
+</form>
