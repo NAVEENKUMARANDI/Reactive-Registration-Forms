@@ -18,8 +18,8 @@ export class RegistrationFormComponent implements OnInit {
   }
 
   registrationProfile = this.fb.group({
-    firstName : ['', Validators.required, Validators.minLength(3), Validators.maxLength(6)],
-    lastName : ['', Validators.required, Validators.minLength(3), Validators.maxLength(6)],
+    firstName : ['', [Validators.required, Validators.minLength(3), Validators.maxLength(6)]],
+    lastName : ['', [Validators.required, Validators.minLength(3), Validators.maxLength(6)]],
     gender : [''],
     cityName: [''],
     vehicle1: [''],
