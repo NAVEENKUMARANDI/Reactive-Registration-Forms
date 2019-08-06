@@ -20,7 +20,7 @@ export class RegistrationFormComponent implements OnInit {
   registrationProfile = this.fb.group({
     firstName : ['', [Validators.required, Validators.minLength(3), Validators.maxLength(6)]],
     lastName : ['', [Validators.required, Validators.minLength(3), Validators.maxLength(6)]],
-    gender : [''],
+    gender : ['',[Validators.required]],
     cityName: [''],
     vehicle1: [''],
 
@@ -46,5 +46,9 @@ get firstName() {
 
 get lastName() {
   return this.registrationProfile.get('lastName');
+}
+
+get gender() {
+  return this.registrationProfile.get('gender');
 }
 }

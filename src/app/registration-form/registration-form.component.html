@@ -37,6 +37,10 @@
 
   
   <br><br>
+  <div *ngIf="gender.errors?.required">
+    <span style="color:Red" ng-show="registrationProfile.required.$error.required"> Please select a gender. </span>
+  </div>
+
   Male <input type="radio" formControlName="gender" id="gender" value="Male" />
   Female <input type="radio" formControlName="gender" id="gender" value="Female" />
 
