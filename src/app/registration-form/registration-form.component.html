@@ -15,11 +15,11 @@
       FirstName is required.
     </div>
 
-    <div *ngIf="firstName.errors?.maxlength">
-      Length of Name is more than 6 chars.
+    <div *ngIf="firstName.errors?.maxlength" >
+      <span style="color:Red" ng-show="registrationProfile.firstName.$error.firstName"> Length of Name is more than 6 chars. </span>
     </div>
     <div *ngIf="firstName.errors?.minlength">
-      Length of Name is lesser than 3 chars.
+        <span style="color:Red" ng-show="registrationProfile.firstName.$error.firstName"> Length of Name is lesser than 3 chars. </span>
     </div>
 
     <div *ngIf="lastName.errors?.minlength"> 
@@ -27,10 +27,10 @@
     </div>
 
     <div *ngIf="lastName.errors?.maxlength">
-      Length of Name is more than 6 chars.
+        <span style="color:Red" ng-show="registrationProfile.lastName.$error.lastName"> Length of Name is more than 6 chars.</span>
     </div>
     <div *ngIf="lastName.errors?.minlength">
-      Length of Name is lesser than 3 chars.
+        <span style="color:Red" ng-show="registrationProfile.lastName.$error.lastName"> Length of Name is lesser than 3 chars.</span>
     </div>
 
   </div>
