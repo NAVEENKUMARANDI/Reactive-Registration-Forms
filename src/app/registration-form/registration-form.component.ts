@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormArray, FormGroup} from '@angular/forms';
+import { FormBuilder, Validators, FormArray, FormGroup, FormControl} from '@angular/forms';
 
 
 
@@ -38,10 +38,6 @@ changeCity(e) {
 
 get cityName() {
   return this.registrationProfile.get('cityName');
-}
-
-get qualifications() {
-  return this.registrationProfile.get('qualifications') as FormArray;
 }
 
 get firstName() {
