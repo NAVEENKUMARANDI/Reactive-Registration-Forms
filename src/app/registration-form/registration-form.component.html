@@ -5,37 +5,47 @@
 <form [formGroup]="registrationProfile" (ngSubmit)="onSubmit()">
 
   <label for="firstName"> First Name :</label>
-  <input type="text" id="firstName" formControlName="firstName" required/>
-
-  <label for="lastName"> Last Name :</label>
-  <input type="text" id="lasttName" formControlName="lastName" />
+  <input type="text" id="firstName" formControlName="firstName" required />
 
   <div *ngIf="registrationProfile.invalid" class="alert alert-danger">
     <div *ngIf="firstName.errors?.lengthValidation">
       FirstName is required.
     </div>
 
-    <div *ngIf="firstName.errors?.maxlength" >
-      <span style="color:Red" ng-show="registrationProfile.firstName.$error.firstName"> Length of Name is more than 6 chars. </span>
+    <div *ngIf="firstName.errors?.maxlength">
+      <span style="color:Red" ng-show="registrationProfile.firstName.$error.firstName"> Length of FirstName is more than
+        6
+        chars. </span>
     </div>
     <div *ngIf="firstName.errors?.minlength">
-        <span style="color:Red" ng-show="registrationProfile.firstName.$error.firstName"> Length of Name is lesser than 3 chars. </span>
+      <span style="color:Red" ng-show="registrationProfile.firstName.$error.firstName"> Length of FirstName is lesser
+        than 3
+        chars. </span>
     </div>
+  </div>
 
-    <div *ngIf="lastName.errors?.minlength"> 
-      LastLastName is required.
-    </div>
+  <br><br>
+  <label for="lastName"> Last Name :</label>
+  <input type="text" id="lasttName" formControlName="lastName" />
 
-    <div *ngIf="lastName.errors?.maxlength">
-        <span style="color:Red" ng-show="registrationProfile.lastName.$error.lastName"> Length of Name is more than 6 chars.</span>
-    </div>
-    <div *ngIf="lastName.errors?.minlength">
-        <span style="color:Red" ng-show="registrationProfile.lastName.$error.lastName"> Length of Name is lesser than 3 chars.</span>
-    </div>
+  <div *ngIf="registrationProfile.invalid" class="alert alert-danger">
+  <div *ngIf="lastName.errors?.minlength">
+    LastLastName is required.
+  </div>
+
+  <div *ngIf="lastName.errors?.maxlength">
+    <span style="color:Red" ng-show="registrationProfile.lastName.$error.lastName"> Length of LastName is more than 6
+      chars.</span>
+  </div>
+  <div *ngIf="lastName.errors?.minlength">
+    <span style="color:Red" ng-show="registrationProfile.lastName.$error.lastName"> Length of LastName is lesser than
+      3
+      chars.</span>
+  </div>
 
   </div>
 
-  
+
   <br><br>
   <div *ngIf="gender.errors?.required">
     <span style="color:Red" ng-show="registrationProfile.required.$error.required"> Please select a gender. </span>
@@ -44,14 +54,22 @@
   Male <input type="radio" formControlName="gender" id="gender" value="Male" />
   Female <input type="radio" formControlName="gender" id="gender" value="Female" />
 
-  <br>
+  <br><br>
+  <div *ngIf="cityName.errors?.required">
+    <span style="color:Red" ng-show="registrationProfile.required.$error.required"> Please select a city. </span>
+  </div>
+
   <select multiple formControlName="cityName">
     <option value="">Choose your city</option>
     <option *ngFor="let city of City" [ngValue]="city" (change)="changeCity($event)">{{city}}
     </option>
   </select>
 
-  <input type="checkbox" formControlName="vehicle1" id="vehicle1" value="Bike"> I have a bike<br>
+  <br><br>
+  <div *ngIf="vehicle.errors?.required">
+    <span style="color:Red" ng-show="registrationProfile.required.$error.required"> Please select a chekbox. </span>
+  </div>
+  <input type="checkbox" formControlName="vehicle" id="vehicle" value="Bike"> I have a bike<br>
 
   <div *ngIf="isSubmitted && myForm.invalid">
     <p>Please select either value</p>

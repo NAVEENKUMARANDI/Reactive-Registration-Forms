@@ -21,9 +21,8 @@ export class RegistrationFormComponent implements OnInit {
     firstName : ['', [Validators.required, Validators.minLength(3), Validators.maxLength(6)]],
     lastName : ['', [Validators.required, Validators.minLength(3), Validators.maxLength(6)]],
     gender : ['',[Validators.required]],
-    cityName: [''],
-    vehicle1: [''],
-
+    cityName: ['',[Validators.required]],
+    vehicle: ['', [Validators.required]]
   });
 
   onSubmit() {
@@ -50,5 +49,9 @@ get lastName() {
 
 get gender() {
   return this.registrationProfile.get('gender');
+}
+
+get vehicle() {
+  return this.registrationProfile.get('vehicle');
 }
 }
